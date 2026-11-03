@@ -1,0 +1,24 @@
+name: Build image
+
+# The steps live in Drakknar/ci-workflows, pinned to a commit. Tests every push. Only main publishes.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    uses: Drakknar/ci-workflows/.github/workflows/image.yml@2de469f6d42667eedb5562376159cd8cdf8da628 # main
+    permissions:
+      contents: read
+      packages: write
+    with:
+      test_command: npm ci --no-audit --no-fund && node test/tools.test.js
