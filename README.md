@@ -1,5 +1,7 @@
 # ha-diag MCP
 
+<img src="assets/icon.svg" alt="" width="96" align="right">
+
 Read-only MCP server (Streamable HTTP, stateless, `POST /mcp`) for diagnosing Home Assistant: logs, repairs, states, config entries, automation and script config, and Zigbee2MQTT's bridge info. It has no write tools: it only sends HTTP GETs and read-only websocket commands.
 
 Home Assistant's own MCP server (`/api/mcp`) only sees entities exposed to Assist. This one covers what that can't: errors, repairs, add-on logs, every entity, and what refers to what.
